@@ -1,0 +1,149 @@
+{
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.showContextMenu": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",//生成 SyncTeX 文件，用于正反向跳转
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "latexmk",//latexmk 是一个自动编译管理工具。它会自动判断要跑几次 LaTeX，要不要跑 BibTeX
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "-outdir=%OUTDIR%",//设置输出目录
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [//tools 是单个工具，recipes 是工具组合。
+        {
+            "name": "XeLaTeX",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "PDFLaTeX",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "BibTeX",
+            "tools": [
+                "bibtex"
+            ]
+        },
+        {
+            "name": "LaTeXmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+    // 几个常见文件解释：
+
+    // .aux
+
+    // 交叉引用辅助文件。
+
+    // .log
+
+    // 编译日志。
+
+    // .toc
+
+    // 目录文件。
+
+    // .bbl
+
+    // BibTeX 生成的参考文献内容。
+
+    // .blg
+
+    // BibTeX 日志。
+
+    // .out
+
+    // hyperref 生成的书签/链接信息。
+
+    // .fls / .fdb_latexmk
+
+    // latexmk 用来记录依赖和编译状态的文件。
+    "latex-workshop.latex.autoClean.run": "onFailed",//编译失败时自动清理辅助文件
+    "latex-workshop.latex.recipe.default": "LaTeXmk",
+    "latex-workshop.latex.outDir": "%DIR%/build",//编译产物输出到 .tex 文件所在目录。
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.ref.viewer": "auto",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "workbench.secondarySideBar.defaultVisibility": "visible"
+}
