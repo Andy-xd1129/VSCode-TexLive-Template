@@ -1,10 +1,11 @@
 # Ubuntu + VSCode + TeX Live 配置简明流程
 
 本文记录在 Ubuntu 下配置 VSCode + TeX Live + LaTeX Workshop 的基本流程，适合用于中文 LaTeX 文档、论文、报告编写。
+![VSCode + TeX Live workflow](figures/example.png)
 
 ## 1. 安装 TeX Live
 
-通过https://tug.org/texlive/acquire-iso.html来下载TeX Live ISO 镜像。
+通过 https://tug.org/texlive/acquire-iso.html 来下载TeX Live ISO 镜像。
 
 如果已经下载 TeX Live ISO 镜像，进入镜像挂载目录后执行：
 
